@@ -1,7 +1,7 @@
 # projeto-pd
 Projeto referente ao módulo de Programação Distribuída LetsCode
 
-O projeto do módulo de programação distribuída será a utilização do Kafka no projeto desenvolvido no módulo anterior.
+O projeto do módulo de programação distribuída foi a utilização do Kafka no projeto desenvolvido no módulo anterior.
 
 (https://github.com/ezambomsantana/letscode-banco-de-dados/blob/main/projeto.md)
 
