@@ -1,16 +1,12 @@
 package br.com.letscode.comprasapi.compra.repository;
 
-
 import br.com.letscode.comprasapi.compra.model.Compra;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 
 @Repository
-public interface CompraRepository extends JpaRepository<Compra, Integer>, QuerydslPredicateExecutor<Compra> {
+public interface CompraRepository extends ReactiveMongoRepository<Compra, Integer>{
 
-    Page<Compra> findByCpfCliente(String cpf, Pageable pageable);
+    Flux<Compra> findCompraByCpfCliente(String cpf);
 }

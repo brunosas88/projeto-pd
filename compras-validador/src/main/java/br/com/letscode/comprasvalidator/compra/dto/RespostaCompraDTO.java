@@ -1,7 +1,5 @@
 package br.com.letscode.comprasvalidator.compra.dto;
 
-
-
 import br.com.letscode.comprasvalidator.compra.model.Compra;
 import br.com.letscode.comprasvalidator.pedido.dto.RespostaPedidoDTO;
 import lombok.*;

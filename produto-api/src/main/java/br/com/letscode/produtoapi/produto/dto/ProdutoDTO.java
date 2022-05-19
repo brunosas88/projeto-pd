@@ -4,12 +4,14 @@ package br.com.letscode.produtoapi.produto.dto;
 import br.com.letscode.produtoapi.produto.model.Produto;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ProdutoDTO {
+public class ProdutoDTO implements Serializable {
     private String codigo;
     private Float preco;
     private Integer qtdDisponivel;

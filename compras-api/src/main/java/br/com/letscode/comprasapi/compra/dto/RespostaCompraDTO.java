@@ -2,7 +2,6 @@ package br.com.letscode.comprasapi.compra.dto;
 
 
 import br.com.letscode.comprasapi.compra.model.Compra;
-import br.com.letscode.comprasapi.pedido.dto.RequisicaoPedidoDTO;
 import br.com.letscode.comprasapi.pedido.dto.RespostaPedidoDTO;
 import lombok.*;
 

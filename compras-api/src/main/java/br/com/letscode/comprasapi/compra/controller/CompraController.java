@@ -3,15 +3,12 @@ package br.com.letscode.comprasapi.compra.controller;
 
 import br.com.letscode.comprasapi.compra.dto.RequisicaoCompraDTO;
 import br.com.letscode.comprasapi.compra.dto.RespostaCompraDTO;
-import br.com.letscode.comprasapi.compra.model.Compra;
 import br.com.letscode.comprasapi.compra.service.CompraService;
-import com.querydsl.core.types.Predicate;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 
 @RestController
@@ -22,13 +19,20 @@ public class CompraController {
     private final CompraService compraService;
 
     @PostMapping
-    public void cadastrarCompra (@RequestBody RequisicaoCompraDTO requisicaoCompra) {
-        compraService.cadastraCompra(requisicaoCompra);
+    public ResponseEntity<Mono<RespostaCompraDTO>> cadastrarCompra (@RequestBody RequisicaoCompraDTO requisicaoCompra) {
+        return ResponseEntity.ok(compraService.cadastraCompra(requisicaoCompra));
     }
 
-    @GetMapping
-    public ResponseEntity<Page<RespostaCompraDTO>> listarCompras (@QuerydslPredicate(root = Compra.class) Predicate predicate, Pageable pageable) {
-        return ResponseEntity.ok(compraService.listaCompras(predicate, pageable));
+    @GetMapping("/listar")
+    public ResponseEntity<Flux<RespostaCompraDTO>> listarCompras () {
+        return ResponseEntity.ok(compraService.listaCompras());
     }
+
+    @GetMapping("/{cpf}")
+    public ResponseEntity<Flux<RespostaCompraDTO>> listarComprasCpf (@PathVariable String cpf) {
+        return ResponseEntity.ok(compraService.listaComprasCpf(cpf));
+    }
+
+
 
 }
